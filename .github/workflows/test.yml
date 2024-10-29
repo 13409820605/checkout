@@ -1,29 +1,29 @@
-name: Build and Test
+名称:构建和测试
 
-on:
-  pull_request:
-  push:
-    branches:
-      - main
-      - releases/*
+在:
+拉取请求:
+推:
+分支:
+      - -主
+      - -版本/*
 
 
-# Note that when you see patterns like "ref: test-data/v2/basic" within this workflow,
-# these refer to "test-data" branches on this actions/checkout repo.
-# (For example, test-data/v2/basic -> https://github.com/actions/checkout/tree/test-data/v2/basic)
+#请注意，当您在此工作流中看到类似“ref: test-data/v2/basic”的模式时，
+#这些是指此操作/签出回购上的“测试数据”分支。
+#(例如，test-data/v2/basic-> https://github。com/actions/签出/tree/test-data/v2/basic)
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20.x
-      - uses: actions/checkout@v4.1.6
-      - run: npm ci
-      - run: npm run build
-      - run: npm run format-check
-      - run: npm run lint
+工作:
+建设:
+连续运行: 运行:Ubuntu-最新版
+步伐:
+      - 使用: 动作/设置-节点@v4
+随着:
+节点版本: 20.x
+      - 使用: 操作/签出@v4.1.6
+      - 奔跑: npm ci
+      - 奔跑: npm运行构建
+      - 奔跑: npm运行格式-检查
+      - 奔跑: npm运行lint
       - run: npm test
       - name: Verify no unstaged changes
         run: __test__/verify-no-unstaged-changes.sh
